@@ -2,20 +2,20 @@ name: Run AI Bot Daily
 
 on:
   schedule:
-    - cron: '0 9 * * *' # يعمل يومياً الساعة 9 صباحاً
-  workflow_dispatch: # يتيح لك تشغيله يدوياً من زر في GitHub
+    - cron: '0 9 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
