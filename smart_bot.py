@@ -24,7 +24,7 @@ def run_ai_bot():
     - Use professional, concise language.
     - Provide exactly 3 bullet points.
     - Include specific technical terminology.
-    - Keep it under 100 words.
+    - Keep it under 600 words.
     """
 
     # 4. استدعاء نموذج Groq
