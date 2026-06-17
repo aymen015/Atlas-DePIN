@@ -1,0 +1,27 @@
+name: AI-Driven-Developer-Bot
+
+schedule:
+      - cron: '0 9 * * *' # Runs at 09:00 daily
+    workflow_dispatch: # Allows manual triggerيتيح لك تشغيله يدوياً
+
+jobs:
+  ai-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: Install dependencies
+        run: |
+          pip install google-generativeai PyGithub
+          
+      - name: Run AI Bot
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: python smart_bot.py
