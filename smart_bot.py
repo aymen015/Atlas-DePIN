@@ -4,52 +4,55 @@ from groq import Groq
 from github import Github, Auth
 
 def run_ai_bot():
-    # 1. جلب الإعدادات
     GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
     GH_TOKEN = os.environ.get("GH_TOKEN")
 
-    # 2. تحضير محتوى مبتكر ومتغير
-    topics = [
-        "latency reduction in decentralized GPU networks",
-        "optimizing incentive mechanisms for node providers",
-        "privacy-preserving computation in edge nodes",
-        "cross-chain interoperability for DePIN resources"
-    ]
-    selected_topic = random.choice(topics)
+    if not GROQ_API_KEY or not GH_TOKEN:
+        print("Error: Missing Environment Variables.")
+        return
 
-    # 3. إعداد الـ Prompt الاحترافي
-    prompt = f"""
-    Act as a lead DePIN engineer. Provide a highly technical improvement proposal 
-    for an AI compute project focusing on: {selected_topic}.
-    - Use professional, concise language.
-    - Provide exactly 3 bullet points.
-    - Include specific technical terminology.
-    - Keep it under 600 words.
-    """
-
-    # 4. استدعاء نموذج Groq
+    # 1. تحليل ذكاء السوق (الديناميكي)
     client = Groq(api_key=GROQ_API_KEY)
+    prompt = """
+    Act as a DePIN analyst. Provide 3 short, technical insights on current 
+    trends in decentralized AI compute (e.g., GPU demand, DePIN protocols). 
+    Keep it extremely concise (under 200 words total).
+    """
     chat_completion = client.chat.completions.create(
         messages=[{"role": "user", "content": prompt}],
-        model="llama-3.3-70b-versatile",
-        temperature=0.8,  # رفع الحرارة قليلاً لزيادة الإبداع
+        model="llama-3.3-70b-versatile"
     )
-    
-    innovation = chat_completion.choices[0].message.content
-    print(f"AI Suggestion: {innovation}")
+    market_intelligence = chat_completion.choices[0].message.content
 
-    # 5. تحديث GitHub
+    # 2. نص المشروع الثابت (الرؤية)
+    vision_text = """
+# Atlas DePIN: Scaling AI Compute from Algeria to the World
+
+## The Vision: AI for Everyone, Not the Few
+Atlas DePIN is democratizing AI by providing high-performance GPU resources to the decentralized ecosystem, leveraging protocols like Akash Network and io.net. From Algeria, we are breaking the monopoly of tech giants.
+
+## The Algerian Advantage
+- **Unrivaled Energy Efficiency:** Leveraging competitive energy costs to offer affordable AI compute.
+- **Next-Gen Connectivity:** Powered by Medusa cable and upgraded national fiber-optics for low-latency transmission.
+- **Technical Rigor:** Built on Kubernetes (K8s) and Docker for 24/7 high-availability and thermal-optimized performance.
+
+## Technical Architecture
+- **Orchestration:** Automated K8s clusters for seamless AI workload distribution.
+- **Monitoring:** Real-time tracking via Prometheus/Grafana to ensure peak performance-per-watt.
+"""
+
+    # 3. دمج المحتوى
+    final_readme = f"{vision_text}\n\n## 🚀 Live Market Intelligence\n{market_intelligence}\n\n---\n*Updated  via Ayman | Atlas DePIN 🇩🇿  https://x.com/cotex5024 .*"
+
+    # 4. التحديث على GitHub
     auth = Auth.Token(GH_TOKEN)
     g = Github(auth=auth)
     repo = g.get_repo("aymen015/Atlas-DePIN")
-
-    # إنشاء محتوى منظم
-    content = f"# Atlas DePIN\n\n## 🚀 Latest AI-Driven Innovation\n*Focus Topic: {selected_topic.capitalize()}*\n\n{innovation}\n\n---\n*Updated automatically via AI Agent.*"
     
     try:
         contents = repo.get_contents("README.md")
-        repo.update_file(contents.path, "feat: Professional AI intelligence update", content, contents.sha)
-        print("Success: Updated repository with high-quality AI insight!")
+        repo.update_file(contents.path, "feat: Update Atlas DePIN vision and market data", final_readme, contents.sha)
+        print("Success: README updated with vision and intelligence!")
     except Exception as e:
         print(f"Error: {e}")
 
