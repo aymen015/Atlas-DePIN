@@ -1,6 +1,6 @@
 # Atlas DePIN
 
 ## Latest AI Innovation
-Implementing a hybrid approach that combines graph neural networks (GNNs) with transformers can significantly enhance the DePIN AI compute project's performance by allowing for more efficient processing of complex, heterogeneous graphs and improved handling of long-range dependencies.
+Implementing a novel sparse attention mechanism with dynamically generated masks can significantly enhance the efficiency and scalability of the DePIN AI compute project by reducing computational overhead and minimizing unnecessary parameter updates.
 
 *Updated automatically via AI.*
