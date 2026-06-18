@@ -36,6 +36,13 @@ def run_ai_bot():
 ## The Vision: AI for Everyone, Not the Few
 Atlas DePIN is democratizing AI by providing high-performance GPU resources to the decentralized ecosystem, leveraging protocols like Akash Network and io.net. From Algeria, we are breaking the monopoly of tech giants.
 
+## 💎 Support the Vision
+Atlas-DePIN is a community-driven initiative. If you value our mission to decentralize AI compute, consider supporting our development via Giveth:
+
+[👉 Support Atlas-DePIN on Giveth](https://giveth.io/project/atlas-depin)
+
+*Your contributions help us maintain nodes, upgrade hardware, and keep our AI research open to everyone.*
+
 ## The Algerian Advantage
 - **Unrivaled Energy Efficiency:** Leveraging competitive energy costs to offer affordable AI compute.
 - **Next-Gen Connectivity:** Powered by Medusa cable and upgraded national fiber-optics for low-latency transmission.
@@ -63,12 +70,11 @@ Atlas DePIN is democratizing AI by providing high-performance GPU resources to t
 > *{random_fact}*
 
 ---
-*Updated on {current_date} via Aymen | Atlas DePIN 🇩🇿 | [Twitter](https://x.com/cotex5024) .* ### 🤝 How to Contribute
+*Updated on {current_date} via Ayman | Atlas DePIN 🇩🇿 | [Twitter](https://x.com/cotex5024) .* ### 🤝 How to Contribute
 We welcome contributions from the community! Whether it's reporting a bug, improving documentation, or adding new DePIN insights, your help makes **Atlas-DePIN** stronger.
 
 * **Read our guidelines:** Check out [CONTRIBUTING.md](CONTRIBUTING_TEMPLATE.md) for how to get started.
-* **Have an idea?** Open a new [Issue](https://github.com/aymen015/Atlas-DePIN/issues) and let's discuss it.
-"""
+* **Have an idea?** Open a new [Issue](https://github.com/aymen015/Atlas-DePIN/issues) and let's discuss it."""
 
     # 4. التحديث على GitHub
     auth = Auth.Token(GH_TOKEN)
