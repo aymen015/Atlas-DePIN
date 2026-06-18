@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software or our market insights, please cite it as below."
+authors:
+  - family-names: "Dradj"
+    given-names: "Ayman"
+title: "Atlas DePIN: Scaling AI Compute from Algeria to the World"
+version: 1.0.0
+date-released: 2026-06-18
+url: "https://github.com/aymen015/Atlas-DePIN"
+license: MIT
+repository-code: "https://github.com/aymen015/Atlas-DePIN"
