@@ -39,7 +39,7 @@ Atlas DePIN is democratizing AI by providing high-performance GPU resources to t
 ## 💎 Support the Vision
 Atlas-DePIN is a community-driven initiative. If you value our mission to decentralize AI compute, consider supporting our development via Giveth:
 
-[👉 Support Atlas-DePIN on Giveth](https://giveth.io/project/atlas-depin)
+[👉 Support Atlas-DePIN on Giveth](https://giveth.io/project/atlas-depin:-scaling-ai-compute-from-algeria-to-world)
 
 *Your contributions help us maintain nodes, upgrade hardware, and keep our AI research open to everyone.*
 
