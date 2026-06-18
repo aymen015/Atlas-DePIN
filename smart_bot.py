@@ -29,6 +29,10 @@ def run_ai_bot():
     vision_text = """
 # Atlas DePIN: Scaling AI Compute from Algeria to the World
 
+![Build Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-blue)
+![Nodes](https://img.shields.io/badge/DePIN-Operational-orange)
+
 ## The Vision: AI for Everyone, Not the Few
 Atlas DePIN is democratizing AI by providing high-performance GPU resources to the decentralized ecosystem, leveraging protocols like Akash Network and io.net. From Algeria, we are breaking the monopoly of tech giants.
 
