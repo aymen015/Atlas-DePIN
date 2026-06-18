@@ -8,6 +8,13 @@
 ## The Vision: AI for Everyone, Not the Few
 Atlas DePIN is democratizing AI by providing high-performance GPU resources to the decentralized ecosystem, leveraging protocols like Akash Network and io.net. From Algeria, we are breaking the monopoly of tech giants.
 
+## 💎 Support the Vision
+Atlas-DePIN is a community-driven initiative. If you value our mission to decentralize AI compute, consider supporting our development via Giveth:
+
+[👉 Support Atlas-DePIN on Giveth](https://giveth.io/project/atlas-depin)
+
+*Your contributions help us maintain nodes, upgrade hardware, and keep our AI research open to everyone.*
+
 ## The Algerian Advantage
 - **Unrivaled Energy Efficiency:** Leveraging competitive energy costs to offer affordable AI compute.
 - **Next-Gen Connectivity:** Powered by Medusa cable and upgraded national fiber-optics for low-latency transmission.
@@ -19,16 +26,16 @@ Atlas DePIN is democratizing AI by providing high-performance GPU resources to t
 
 
 ## 🚀 Live Market Intelligence
-As a DePIN analyst, I provide the following insights:
+As a DePIN analyst, I've identified the following trends:
 
-1. **GPU demand surge**: Decentralized AI compute is driving up GPU prices due to increased adoption, with NVIDIA's A100 Tensor Core GPUs being highly sought after.
-2. **DePIN protocol growth**: Protocols like TensorFlow and PyTorch are gaining traction, enabling decentralized AI model training and inference on blockchain networks.
-3. **Homomorphic encryption**: Advancements in homomorphic encryption are enhancing DePIN security, allowing for secure AI computation on encrypted data without compromising model integrity or user privacy.
+1. **GPU demand surge**: Decentralized AI compute protocols are driving up GPU prices due to increased adoption and usage.
+2. **DePIN protocol optimization**: Protocols like Polygon and Solana are optimizing their DePIN architectures to reduce latency and increase throughput, enhancing overall network efficiency.
+3. **Homomorphic encryption integration**: DePIN protocols are integrating homomorphic encryption to enable secure, decentralized AI compute on sensitive data, expanding use cases for decentralized AI applications.
 
-> *Energy efficiency is the heartbeat of sustainable AI.*
+> *Did you know? DePIN can reduce infrastructure costs by up to 40%.*
 
 ---
-*Updated on 2026-06-18 via Aymen | Atlas DePIN 🇩🇿 | [Twitter](https://x.com/cotex5024) .* ### 🤝 How to Contribute
+*Updated on 2026-06-18 via Ayman | Atlas DePIN 🇩🇿 | [Twitter](https://x.com/cotex5024) .* ### 🤝 How to Contribute
 We welcome contributions from the community! Whether it's reporting a bug, improving documentation, or adding new DePIN insights, your help makes **Atlas-DePIN** stronger.
 
 * **Read our guidelines:** Check out [CONTRIBUTING.md](CONTRIBUTING_TEMPLATE.md) for how to get started.
