@@ -1,5 +1,5 @@
 
-# Atlas DePIN: Scaling AI Compute from Algeria to the World
+# Atlas DePIN: Scaling AI Compute from Algeria to the World | Giveth
 
 ![Build Status](https://img.shields.io/badge/Status-Active-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-blue)
@@ -19,16 +19,17 @@ Atlas DePIN is democratizing AI by providing high-performance GPU resources to t
 
 
 ## 🚀 Live Market Intelligence
-As a DePIN analyst, I've identified the following trends:
+As a DePIN analyst, I provide the following insights:
 
-1. **Increased GPU demand**: Decentralized AI compute requires high-performance GPUs, driving up demand and prices for NVIDIA and AMD graphics cards.
-2. **DePIN protocol adoption**: Protocols like Cere Network and Numeraire are gaining traction, enabling decentralized data labeling and model training for AI applications.
-3. **Rise of decentralized rendering**: Projects like Render Network are leveraging DePIN to decentralize 3D rendering and graphics processing, further driving GPU utilization and demand.
+1. **GPU demand surge**: Decentralized AI compute is driving up GPU prices due to increased adoption, with NVIDIA's A100 Tensor Core GPUs being highly sought after.
+2. **DePIN protocol growth**: Protocols like TensorFlow and PyTorch are gaining traction, enabling decentralized AI model training and inference on blockchain networks.
+3. **Homomorphic encryption**: Advancements in homomorphic encryption are enhancing DePIN security, allowing for secure AI computation on encrypted data without compromising model integrity or user privacy.
 
-> *The future of AI compute is decentralized, and it's happening now.*
+> *Energy efficiency is the heartbeat of sustainable AI.*
 
 ---
-*Updated on 2026-06-18 via Ayman | Atlas DePIN 🇩🇿 | [Twitter](https://x.com/cotex5024) .* 
+*Updated on 2026-06-18 via Aymen | Atlas DePIN 🇩🇿 | [Twitter](https://x.com/cotex5024) .* ### 🤝 How to Contribute
+We welcome contributions from the community! Whether it's reporting a bug, improving documentation, or adding new DePIN insights, your help makes **Atlas-DePIN** stronger.
 
-### 🤝 How to Contribute
-Interested in helping? Please read our [CONTRIBUTING.md](CONTRIBUTING_TEMPLATE.md) guidelines.
+* **Read our guidelines:** Check out [CONTRIBUTING.md](CONTRIBUTING_TEMPLATE.md) for how to get started.
+* **Have an idea?** Open a new [Issue](https://github.com/aymen015/Atlas-DePIN/issues) and let's discuss it.
