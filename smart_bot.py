@@ -27,7 +27,7 @@ def run_ai_bot():
 
     # 2. نص المشروع الثابت
     vision_text = """
-# Atlas DePIN: Scaling AI Compute from Algeria to the World
+# Atlas DePIN: Scaling AI Compute from Algeria to the World | Giveth
 
 ![Build Status](https://img.shields.io/badge/Status-Active-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-blue)
@@ -55,7 +55,20 @@ Atlas DePIN is democratizing AI by providing high-performance GPU resources to t
     random_fact = random.choice(fun_facts)
     current_date = datetime.now().strftime("%Y-%m-%d")
     
-    final_readme = f"{vision_text}\n\n## 🚀 Live Market Intelligence\n{market_intelligence}\n\n> *{random_fact}*\n\n---\n*Updated on {current_date} via Ayman | Atlas DePIN 🇩🇿 | [Twitter](https://x.com/cotex5024) .* \n\n### 🤝 How to Contribute\nInterested in helping? Please read our [CONTRIBUTING.md](CONTRIBUTING_TEMPLATE.md) guidelines."
+    final_readme = f"""{vision_text}
+
+## 🚀 Live Market Intelligence
+{market_intelligence}
+
+> *{random_fact}*
+
+---
+*Updated on {current_date} via Aymen | Atlas DePIN 🇩🇿 | [Twitter](https://x.com/cotex5024) .* ### 🤝 How to Contribute
+We welcome contributions from the community! Whether it's reporting a bug, improving documentation, or adding new DePIN insights, your help makes **Atlas-DePIN** stronger.
+
+* **Read our guidelines:** Check out [CONTRIBUTING.md](CONTRIBUTING_TEMPLATE.md) for how to get started.
+* **Have an idea?** Open a new [Issue](https://github.com/aymen015/Atlas-DePIN/issues) and let's discuss it.
+"""
 
     # 4. التحديث على GitHub
     auth = Auth.Token(GH_TOKEN)
