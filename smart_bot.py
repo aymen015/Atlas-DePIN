@@ -2,6 +2,7 @@ import os
 import random
 from groq import Groq
 from github import Github, Auth
+from datetime import datetime
 
 def run_ai_bot():
     GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
@@ -11,7 +12,7 @@ def run_ai_bot():
         print("Error: Missing Environment Variables.")
         return
 
-    # 1. تحليل ذكاء السوق (الديناميكي)
+    # 1. تحليل ذكاء السوق
     client = Groq(api_key=GROQ_API_KEY)
     prompt = """
     Act as a DePIN analyst. Provide 3 short, technical insights on current 
@@ -24,7 +25,7 @@ def run_ai_bot():
     )
     market_intelligence = chat_completion.choices[0].message.content
 
-    # 2. نص المشروع الثابت (الرؤية)
+    # 2. نص المشروع الثابت
     vision_text = """
 # Atlas DePIN: Scaling AI Compute from Algeria to the World
 
@@ -41,14 +42,22 @@ Atlas DePIN is democratizing AI by providing high-performance GPU resources to t
 - **Monitoring:** Real-time tracking via Prometheus/Grafana to ensure peak performance-per-watt.
 """
 
-    # 3. دمج المحتوى
-    final_readme = f"{vision_text}\n\n## 🚀 Live Market Intelligence\n{market_intelligence}\n\n---\n*Updated  via Ayman | Atlas DePIN 🇩🇿  https://x.com/cotex5024 .*"
+    # 3. إعداد المحتوى الديناميكي والعشوائي
+    fun_facts = [
+        "Did you know? DePIN can reduce infrastructure costs by up to 40%.",
+        "The future of AI compute is decentralized, and it's happening now.",
+        "Energy efficiency is the heartbeat of sustainable AI."
+    ]
+    random_fact = random.choice(fun_facts)
+    current_date = datetime.now().strftime("%Y-%m-%d")
+    
+    final_readme = f"{vision_text}\n\n## 🚀 Live Market Intelligence\n{market_intelligence}\n\n> *{random_fact}*\n\n---\n*Updated on {current_date} via Ayman | Atlas DePIN 🇩🇿 | [Twitter](https://x.com/cotex5024) .* \n\n### 🤝 How to Contribute\nInterested in helping? Please read our [CONTRIBUTING.md](CONTRIBUTING_TEMPLATE.md) guidelines."
 
     # 4. التحديث على GitHub
     auth = Auth.Token(GH_TOKEN)
     g = Github(auth=auth)
     repo = g.get_repo("aymen015/Atlas-DePIN")
-    
+
     try:
         contents = repo.get_contents("README.md")
         repo.update_file(contents.path, "feat: Update Atlas DePIN vision and market data", final_readme, contents.sha)
