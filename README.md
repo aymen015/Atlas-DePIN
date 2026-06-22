@@ -26,16 +26,16 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
 
 
 ## 🚀 Live Market Intelligence
-As a DePIN analyst, here are 3 technical insights:
+As a DePIN analyst, here are 3 technical insights on current trends in decentralized AI compute:
 
-1. **GPU Demand Surge**: Decentralized AI compute platforms are driving up GPU demand, with prices increasing by 20% in the last quarter.
-2. **DePIN Protocols**: New DePIN protocols, such as Graph Protocol, are optimizing AI model training and inference on decentralized networks, reducing latency by 30%.
-3. **Compute Resource Utilization**: Decentralized AI platforms are achieving 90% compute resource utilization, outperforming traditional cloud providers and making decentralized AI compute more competitive.
+1. **GPU Demand Surge**: Decentralized AI protocols are driving up GPU demand, with prices increasing by 20-30% in recent months.
+2. **DePIN Protocols**: Decentralized storage protocols like/Filecoin and InterPlanetary File System (IPFS) are being integrated with AI compute protocols, enabling secure and decentralized data storage for AI workloads.
+3. **Homomorphic Encryption**: DePIN protocols are adopting homomorphic encryption, allowing for secure and private computation on encrypted data, further enhancing the security and decentralization of AI compute.
 
-> *The future of AI compute is decentralized, and it's happening now.*
+> *Did you know? DePIN can reduce infrastructure costs by up to 40%.*
 
 ---
-*Updated on 2026-06-21 via Ayman | Atlas DePIN 🇩🇿 | [Twitter](https://x.com/cotex5024) .* ### 🤝 How to Contribute
+*Updated on 2026-06-22 via Ayman | Atlas DePIN 🇩🇿 | [Twitter](https://x.com/cotex5024) .* ### 🤝 How to Contribute
 We welcome contributions from the community! Whether it's reporting a bug, improving documentation, or adding new DePIN insights, your help makes **Atlas-DePIN** stronger.
 
 * **Read our guidelines:** Check out [CONTRIBUTING.md](CONTRIBUTING_TEMPLATE.md) for how to get started.
