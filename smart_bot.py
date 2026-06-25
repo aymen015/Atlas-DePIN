@@ -15,19 +15,19 @@ def run_ai_bot():
     # 1. تحليل ذكاء السوق
     client = Groq(api_key=GROQ_API_KEY)
     prompt = """
-    Act as a DePIN analyst. Provide 3 short, technical insights on current 
+    Act as a DePIN analyst. Provide 3 short, technical bullet-point insights on current 
     trends in decentralized AI compute (e.g., GPU demand, DePIN protocols). 
-    Keep it extremely concise (under 200 words total).
+    Keep it extremely concise (under 150 words total).
+    Output ONLY the bullet points. Do NOT include intro text like "Here are the insights" or explanations.
     """
     chat_completion = client.chat.completions.create(
         messages=[{"role": "user", "content": prompt}],
         model="llama-3.3-70b-versatile"
     )
-    market_intelligence = chat_completion.choices[0].message.content
+    market_intelligence = chat_completion.choices[0].message.content.strip()
 
     # 2. نص المشروع الثابت
-    vision_text = """
-# Atlas DePIN: Scaling AI Compute from Algeria to the World | Giveth
+    vision_text = """# Atlas DePIN: Scaling AI Compute from Algeria to the World | Giveth
 
 ![Build Status](https://img.shields.io/badge/Status-Active-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-blue)
@@ -50,8 +50,7 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
 
 ## Technical Architecture
 - **Orchestration:** Automated K8s clusters for seamless AI workload distribution.
-- **Monitoring:** Real-time tracking via Prometheus/Grafana to ensure peak performance-per-watt.
-"""
+- **Monitoring:** Real-time tracking via Prometheus/Grafana to ensure peak performance-per-watt."""
 
     # 3. إعداد المحتوى الديناميكي والعشوائي
     fun_facts = [
@@ -62,6 +61,7 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
     random_fact = random.choice(fun_facts)
     current_date = datetime.now().strftime("%Y-%m-%d")
     
+    # هنا تم دمج روابط الحسابات الخاصة بك (X و LinkedIn) مع علم الجزائر بدقة في سطر واحد
     final_readme = f"""{vision_text}
 
 ## 🚀 Live Market Intelligence
@@ -70,7 +70,9 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
 > *{random_fact}*
 
 ---
-*Updated on {current_date} via Ayman | Atlas DePIN 🇩🇿 | [Twitter](https://x.com/cotex5024) .* ### 🤝 How to Contribute
+*Updated on {current_date} via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
+
+### 🤝 How to Contribute
 We welcome contributions from the community! Whether it's reporting a bug, improving documentation, or adding new DePIN insights, your help makes **Atlas-DePIN** stronger.
 
 * **Read our guidelines:** Check out [CONTRIBUTING.md](CONTRIBUTING_TEMPLATE.md) for how to get started.
@@ -84,7 +86,7 @@ We welcome contributions from the community! Whether it's reporting a bug, impro
     try:
         contents = repo.get_contents("README.md")
         repo.update_file(contents.path, "feat: Update Atlas DePIN vision and market data", final_readme, contents.sha)
-        print("Success: README updated with vision and intelligence!")
+        print("Success: README updated with LinkedIn link, vision, and intelligence!")
     except Exception as e:
         print(f"Error: {e}")
 
