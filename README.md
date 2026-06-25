@@ -1,4 +1,3 @@
-
 # Atlas DePIN: Scaling AI Compute from Algeria to the World | Giveth
 
 ![Build Status](https://img.shields.io/badge/Status-Active-brightgreen)
@@ -24,18 +23,17 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
 - **Orchestration:** Automated K8s clusters for seamless AI workload distribution.
 - **Monitoring:** Real-time tracking via Prometheus/Grafana to ensure peak performance-per-watt.
 
-
 ## 🚀 Live Market Intelligence
-As a DePIN analyst, here are 3 technical insights on current trends in decentralized AI compute:
+* GPU demand surges due to DePIN adoption, driving up prices and usage.
+* DePIN protocols prioritize security and decentralized data management, focusing on homomorphic encryption.
+* Compute resource sharing and decentralized data storage gain traction, driven by protocols like Fetch.ai and Cere Network.
 
-1. **GPU demand surge**: Decentralized AI networks are driving up GPU demand, with prices increasing by 20-30% in recent months.
-2. **DePIN protocol adoption**: Protocols like Polygon and Solana are gaining traction, offering faster and more secure decentralized compute options for AI workloads.
-3. **Homomorphic encryption integration**: DePIN protocols are integrating homomorphic encryption, enabling secure computation on encrypted data and expanding use cases for decentralized AI compute.
-
-> *Did you know? DePIN can reduce infrastructure costs by up to 40%.*
+> *The future of AI compute is decentralized, and it's happening now.*
 
 ---
-*Updated on 2026-06-25 via Ayman | Atlas DePIN 🇩🇿 | [Twitter](https://x.com/cotex5024) .* ### 🤝 How to Contribute
+*Updated on 2026-06-25 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
+
+### 🤝 How to Contribute
 We welcome contributions from the community! Whether it's reporting a bug, improving documentation, or adding new DePIN insights, your help makes **Atlas-DePIN** stronger.
 
 * **Read our guidelines:** Check out [CONTRIBUTING.md](CONTRIBUTING_TEMPLATE.md) for how to get started.
