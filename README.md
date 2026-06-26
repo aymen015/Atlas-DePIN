@@ -24,14 +24,14 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
 - **Monitoring:** Real-time tracking via Prometheus/Grafana to ensure peak performance-per-watt.
 
 ## 🚀 Live Market Intelligence
-* GPU demand surges due to DePIN adoption, driving up prices and usage.
-* DePIN protocols prioritize security and decentralized data management, focusing on homomorphic encryption.
-* Compute resource sharing and decentralized data storage gain traction, driven by protocols like Fetch.ai and Cere Network.
+* DePIN protocols are driving up GPU demand, with prices increasing by 20% in Q2.
+* Compute-sharing protocols like Golem and Render are gaining traction, with 30% MoM growth.
+* Layer 2 scaling solutions are emerging to address bottleneck issues in decentralized AI compute, leveraging zk-Rollups and Optimism.
 
 > *The future of AI compute is decentralized, and it's happening now.*
 
 ---
-*Updated on 2026-06-25 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
+*Updated on 2026-06-26 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
 
 ### 🤝 How to Contribute
 We welcome contributions from the community! Whether it's reporting a bug, improving documentation, or adding new DePIN insights, your help makes **Atlas-DePIN** stronger.
