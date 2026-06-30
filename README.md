@@ -24,14 +24,14 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
 - **Monitoring:** Real-time tracking via Prometheus/Grafana to ensure peak performance-per-watt.
 
 ## 🚀 Live Market Intelligence
-* Rising demand for decentralized GPU computing is driving innovation in DePIN protocols.
-* Decentralized storage solutions are being integrated with DePIN to enhance AI data management.
-* Increased adoption of blockchain-based AI frameworks is fueling growth in DePIN-enabled compute networks.
+* GPU demand surges 25% YoY, driven by decentralized AI workloads.
+* DePIN protocols see 30% increase in adoption, primarily for secure off-chain computations.
+* Decentralized storage solutions integrate with DePIN protocols, enhancing data availability for AI models.
 
-> *The future of AI compute is decentralized, and it's happening now.*
+> *Energy efficiency is the heartbeat of sustainable AI.*
 
 ---
-*Updated on 2026-06-29 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
+*Updated on 2026-06-30 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
 
 ### 🤝 How to Contribute
 We welcome contributions from the community! Whether it's reporting a bug, improving documentation, or adding new DePIN insights, your help makes **Atlas-DePIN** stronger.
