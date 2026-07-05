@@ -24,14 +24,14 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
 - **Monitoring:** Real-time tracking via Prometheus/Grafana to ensure peak performance-per-watt.
 
 ## 🚀 Live Market Intelligence
-* GPU demand for AI workloads is driving growth in decentralized compute platforms.
-* DePIN protocols like Polygon and Polkadot are optimizing AI model deployment on blockchain.
-* Homomorphic encryption and zero-knowledge proofs are enhancing data privacy in DePIN-enabled AI applications.
+* Decentralized AI compute demand is driving up GPU prices, with high-end models increasing by 20-30% in Q2.
+* DePIN protocols like Cere Network and Render Network are gaining traction, offering decentralized rendering and compute services.
+* Ethereum's upcoming merge to proof-of-stake is expected to increase decentralized compute capacity, further fueling DePIN protocol adoption.
 
 > *The future of AI compute is decentralized, and it's happening now.*
 
 ---
-*Updated on 2026-07-04 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
+*Updated on 2026-07-05 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
 
 ### 🤝 How to Contribute
 We welcome contributions from the community! Whether it's reporting a bug, improving documentation, or adding new DePIN insights, your help makes **Atlas-DePIN** stronger.
