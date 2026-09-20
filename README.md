@@ -24,11 +24,16 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
 - **Monitoring:** Real-time tracking via Prometheus/Grafana to ensure peak performance-per-watt.
 
 ## 🚀 Live Market Intelligence
-- GPU spot‑price volatility spikes > 30% YoY, driven by LLM inference farms; miners increasingly hedge via tokenized GPU‑lease NFTs on protocols like @Kryptex and @GPUStack.  
-- Cross‑chain staking incentives (e.g., $AIUS on @Celestia, $KOIN on @Polygon) boost node participation, raising effective compute supply by ~18% QoQ while flattening latency variance across regions.  
-- Zero‑knowledge proof rollups (zk‑EVM) are being integrated into DePIN settlement layers, enabling provable compute‑delivery SLAs and reducing on‑chain dispute costs by ~45% compared to earlier Merkle‑tree proofs.
+- **2026-09-14 — Yellow.com:** [Akash Network Token Jumps 12% On Renewed Decentralized Cloud Demand - Yellow.com](https://news.google.com/rss/articles/CBMiigFBVV95cUxPUTN3UGdTVVR3U3ZLMjBpMDVkZGFDaWNmaFVVelpWREM5T2tudVFVcC16blNnR0pmWnVXV25vdmJtdWdreWNMU0J2SjlNeFVUd29ka2t2NmlyTzZGVnhjczk0Y3RyT0FkT0tGcE9WQnJmaWxNdGNGYmlmak03ZXZwS2NCc2pxdXk4NVE?oc=5) **Why it matters:** This is relevant to the availability and evolution of decentralized compute infrastructure.
+- **2026-09-11 — Yellow.com:** [Gensyn Climbs 42% To $0.044 As Decentralized Compute Narrative Resurfaces - Yellow.com](https://news.google.com/rss/articles/CBMigAFBVV95cUxOZ0hyTHh1dndGRnVGbnAzaXIzd0dPYjZZeDFRN1h4clJIQjhOWXI3TmVibk5vY0o5YXNpMW1GaS0zTUxRbmRSYnNLZmlUZXR4MVhSTjRwcjVETGNod2Vva1pneEZwNjg4LXlPeEtRVXMwM2pwWnZNR0E2cFdaTHpqZQ?oc=5) **Why it matters:** This is a current market signal relevant to decentralized AI and DePIN compute.
+- **2026-09-10 — Yellow.com:** [Is Gensyn Becoming The Next Decentralized AI Trade? - Yellow.com](https://news.google.com/rss/articles/CBMiyAFBVV95cUxPUlQ2QWxpNTJmUER2WEctcERXV3g2ZDY5Y1hVbnV3bGQ5S3MwWEVfY0FHejdRNmh1RHp4WWNzMmxKdnZ6WkEwamlwclpoTmpJTElvcFJSWDhWc0xTaUsyTzJMdDJabXoxNnZJeTEwc05HR2JteHNsNlI4dnh2eHFxN3UxZi03WWhsZVVPWGlYR1R2LU90b1dvQWFOZTJKdWI3b1NlMWJscnNTalBkTDNJOVllZWdBZzlRYUo4R1RsaUYtNFhBc1c2ag?oc=5) **Why it matters:** This is a current market signal relevant to decentralized AI and DePIN compute.
 
-> *Energy efficiency is the heartbeat of sustainable AI.*
+### 🔎 Live Research Sources
+- 2026-09-14 — [Yellow.com: Akash Network Token Jumps 12% On Renewed Decentralized Cloud Demand - Yellow.com](https://news.google.com/rss/articles/CBMiigFBVV95cUxPUTN3UGdTVVR3U3ZLMjBpMDVkZGFDaWNmaFVVelpWREM5T2tudVFVcC16blNnR0pmWnVXV25vdmJtdWdreWNMU0J2SjlNeFVUd29ka2t2NmlyTzZGVnhjczk0Y3RyT0FkT0tGcE9WQnJmaWxNdGNGYmlmak03ZXZwS2NCc2pxdXk4NVE?oc=5)
+- 2026-09-11 — [Yellow.com: Gensyn Climbs 42% To $0.044 As Decentralized Compute Narrative Resurfaces - Yellow.com](https://news.google.com/rss/articles/CBMigAFBVV95cUxOZ0hyTHh1dndGRnVGbnAzaXIzd0dPYjZZeDFRN1h4clJIQjhOWXI3TmVibk5vY0o5YXNpMW1GaS0zTUxRbmRSYnNLZmlUZXR4MVhSTjRwcjVETGNod2Vva1pneEZwNjg4LXlPeEtRVXMwM2pwWnZNR0E2cFdaTHpqZQ?oc=5)
+- 2026-09-10 — [Yellow.com: Is Gensyn Becoming The Next Decentralized AI Trade? - Yellow.com](https://news.google.com/rss/articles/CBMiyAFBVV95cUxPUlQ2QWxpNTJmUER2WEctcERXV3g2ZDY5Y1hVbnV3bGQ5S3MwWEVfY0FHejdRNmh1RHp4WWNzMmxKdnZ6WkEwamlwclpoTmpJTElvcFJSWDhWc0xTaUsyTzJMdDJabXoxNnZJeTEwc05HR2JteHNsNlI4dnh2eHFxN3UxZi03WWhsZVVPWGlYR1R2LU90b1dvQWFOZTJKdWI3b1NlMWJscnNTalBkTDNJOVllZWdBZzlRYUo4R1RsaUYtNFhBc1c2ag?oc=5)
+
+> Sources are retrieved live from Google News RSS on **2026-09-20 UTC**. AI only ranks and summarizes verified feed items; if AI is unavailable, the bot safely falls back to the live headlines.
 
 ---
 *Updated on 2026-09-20 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
