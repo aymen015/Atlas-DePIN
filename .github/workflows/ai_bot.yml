@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '0 9 * * *'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'smart_bot.py'
+      - '.github/workflows/ai_bot.yml'
 
 jobs:
   build:
