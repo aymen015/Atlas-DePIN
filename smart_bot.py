@@ -1,120 +1,287 @@
+import json
 import os
 import re
-from datetime import datetime, timezone
+import urllib.parse
+import urllib.request
+import xml.etree.ElementTree as ET
+from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 
-from groq import Groq
 from github import Auth, Github
+from groq import Groq
 
 
-DEFAULT_GROQ_MODEL = "openai/gpt-oss-120b"
-MIN_LIVE_SOURCES = 3
+DEFAULT_GROQ_MODEL = "qwen/qwen3.6-27b"
+MAX_NEWS_AGE_DAYS = 30
+MAX_CANDIDATES = 12
+
+NEWS_QUERIES = [
+    '"decentralized GPU" OR "DePIN" "AI compute"',
+    'Akash OR "io.net" OR Render OR Aethir OR Gensyn OR Nosana "GPU compute"',
+]
+
+RELEVANCE_TERMS = (
+    "depin",
+    "decentralized",
+    "gpu",
+    "compute",
+    "akash",
+    "io.net",
+    "render",
+    "aethir",
+    "gensyn",
+    "nosana",
+)
 
 
-def _as_dict(value):
-    if isinstance(value, dict):
-        return value
-    if hasattr(value, "model_dump"):
-        return value.model_dump()
-    return {}
+def clean_text(value):
+    return re.sub(r"\s+", " ", (value or "")).strip()
 
 
-def extract_search_sources(message):
-    """Extract verified URLs returned by Groq's executed web-search tool."""
-    sources = []
-    seen_urls = set()
+def fetch_google_news(query):
+    params = urllib.parse.urlencode(
+        {"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"}
+    )
+    url = f"https://news.google.com/rss/search?{params}"
+    request = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "Mozilla/5.0 Atlas-DePIN-Live-Research/1.0",
+            "Accept": "application/rss+xml, application/xml, text/xml",
+        },
+    )
 
-    for tool in getattr(message, "executed_tools", None) or []:
-        tool_data = _as_dict(tool)
+    with urllib.request.urlopen(request, timeout=25) as response:
+        xml_bytes = response.read()
 
-        search_results = tool_data.get("search_results")
-        if search_results is None:
-            search_results = getattr(tool, "search_results", None)
+    root = ET.fromstring(xml_bytes)
+    items = []
 
-        if hasattr(search_results, "model_dump"):
-            search_results = search_results.model_dump()
+    for item in root.findall(".//item"):
+        title = clean_text(item.findtext("title"))
+        link = clean_text(item.findtext("link"))
+        pub_date_raw = clean_text(item.findtext("pubDate"))
+        source_node = item.find("source")
+        publisher = clean_text(source_node.text if source_node is not None else "")
+        publisher_url = (
+            clean_text(source_node.attrib.get("url"))
+            if source_node is not None
+            else ""
+        )
 
-        if isinstance(search_results, dict):
-            results = search_results.get("results", [])
-        elif isinstance(search_results, list):
-            results = search_results
-        else:
-            results = []
+        if not title or not link or not pub_date_raw:
+            continue
 
-        for result in results:
-            result_data = _as_dict(result) if not isinstance(result, dict) else result
-            url = (result_data.get("url") or "").strip()
-            title = (result_data.get("title") or url).strip()
-            if url and url not in seen_urls:
-                sources.append({"title": title, "url": url})
-                seen_urls.add(url)
+        try:
+            published = parsedate_to_datetime(pub_date_raw)
+            if published.tzinfo is None:
+                published = published.replace(tzinfo=timezone.utc)
+            published = published.astimezone(timezone.utc)
+        except (TypeError, ValueError):
+            continue
 
-        # Compatibility fallback for SDK/API response shapes that expose
-        # raw tool output instead of structured search_results.
-        output = tool_data.get("output") or getattr(tool, "output", "") or ""
-        if isinstance(output, str):
-            for url in re.findall(r"https?://[^\s)\]}>\"']+", output):
-                url = url.rstrip(".,;:")
-                if url not in seen_urls:
-                    sources.append({"title": url, "url": url})
-                    seen_urls.add(url)
+        items.append(
+            {
+                "title": title,
+                "link": link,
+                "publisher": publisher or "Unknown source",
+                "publisher_url": publisher_url,
+                "published": published,
+            }
+        )
 
-    return sources
+    return items
 
 
-def build_sources_markdown(sources, limit=6):
+def get_live_candidates():
+    now = datetime.now(timezone.utc)
+    cutoff = now - timedelta(days=MAX_NEWS_AGE_DAYS)
+    collected = []
+    seen = set()
+
+    for query in NEWS_QUERIES:
+        try:
+            feed_items = fetch_google_news(query)
+            print(f"RSS query returned {len(feed_items)} items: {query}")
+        except Exception as exc:
+            print(f"Warning: RSS query failed: {query}: {exc}")
+            continue
+
+        for item in feed_items:
+            if item["published"] < cutoff:
+                continue
+
+            title_key = re.sub(r"\W+", " ", item["title"].lower()).strip()
+            if title_key in seen:
+                continue
+
+            lowered = item["title"].lower()
+            if not any(term in lowered for term in RELEVANCE_TERMS):
+                continue
+
+            seen.add(title_key)
+            collected.append(item)
+
+    collected.sort(key=lambda item: item["published"], reverse=True)
+
+    if len(collected) < 3:
+        raise RuntimeError(
+            f"Live-news verification failed: only {len(collected)} relevant items "
+            f"were found in the last {MAX_NEWS_AGE_DAYS} days. README was not changed."
+        )
+
+    return collected[:MAX_CANDIDATES]
+
+
+def candidate_text(items):
     lines = []
-    for source in sources[:limit]:
-        safe_title = source["title"].replace("[", "").replace("]", "")
-        lines.append(f"- [{safe_title}]({source['url']})")
+    for index, item in enumerate(items, start=1):
+        date = item["published"].strftime("%Y-%m-%d")
+        lines.append(f"{index}. [{date}] {item['title']} — {item['publisher']}")
     return "\n".join(lines)
 
 
+def ai_select_sources(items, api_key, model):
+    if not api_key:
+        print("GROQ_API_KEY unavailable; using deterministic RSS fallback.")
+        return None
+
+    prompt = f"""
+You are selecting live market-intelligence signals for Atlas DePIN.
+
+Below are verified news-feed headlines from the last {MAX_NEWS_AGE_DAYS} days.
+Choose exactly 3 items most relevant to decentralized AI/GPU compute.
+
+Rules:
+- Use ONLY the supplied headline, publisher, and date.
+- Do not invent statistics, partnerships, funding amounts, technical details, or dates.
+- Prefer substantive infrastructure, product, network, funding, or adoption developments.
+- Avoid duplicate stories covering the same event.
+- For each item, write one conservative "why_it_matters" sentence, max 24 words.
+- Do not turn implications into factual claims.
+
+Return JSON only:
+{{"selected":[{{"source_id":1,"why_it_matters":"..."}}]}}
+
+Candidates:
+{candidate_text(items)}
+"""
+
+    try:
+        client = Groq(api_key=api_key)
+        completion = client.chat.completions.create(
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"},
+            reasoning_format="hidden",
+            temperature=0.2,
+            max_completion_tokens=700,
+        )
+        payload = json.loads(completion.choices[0].message.content or "{}")
+        selected = payload.get("selected")
+
+        if not isinstance(selected, list) or len(selected) != 3:
+            raise ValueError("AI did not return exactly 3 selected items.")
+
+        validated = []
+        used_ids = set()
+
+        for entry in selected:
+            source_id = int(entry["source_id"])
+            why = clean_text(entry.get("why_it_matters"))
+            if source_id < 1 or source_id > len(items):
+                raise ValueError(f"Invalid source_id: {source_id}")
+            if source_id in used_ids:
+                raise ValueError(f"Duplicate source_id: {source_id}")
+            if not why:
+                raise ValueError("Missing why_it_matters.")
+
+            used_ids.add(source_id)
+            validated.append(
+                {"source_id": source_id, "why_it_matters": why}
+            )
+
+        print(f"AI selection succeeded with model: {model}")
+        return validated
+
+    except Exception as exc:
+        print(f"Warning: AI enrichment unavailable; RSS fallback used: {exc}")
+        return None
+
+
+def fallback_why_it_matters(title):
+    lowered = title.lower()
+
+    if any(term in lowered for term in ("funding", "fundraise", "raises", "investment")):
+        return "This is a live signal of capital activity around decentralized compute infrastructure."
+    if any(term in lowered for term in ("launch", "mainnet", "network", "platform")):
+        return "This is relevant to the availability and evolution of decentralized compute infrastructure."
+    if any(term in lowered for term in ("partner", "integration", "integrates", "collaboration")):
+        return "This is relevant to ecosystem integration and potential demand for decentralized compute."
+    if "gpu" in lowered:
+        return "This is directly relevant to GPU capacity and decentralized AI-compute market activity."
+
+    return "This is a current market signal relevant to decentralized AI and DePIN compute."
+
+
+def choose_items(items, ai_selection):
+    if ai_selection:
+        chosen = []
+        for selection in ai_selection:
+            item = dict(items[selection["source_id"] - 1])
+            item["why_it_matters"] = selection["why_it_matters"]
+            chosen.append(item)
+        return chosen
+
+    chosen = []
+    for item in items[:3]:
+        copy = dict(item)
+        copy["why_it_matters"] = fallback_why_it_matters(item["title"])
+        chosen.append(copy)
+    return chosen
+
+
+def build_market_markdown(items):
+    lines = []
+    for item in items:
+        date = item["published"].strftime("%Y-%m-%d")
+        lines.append(
+            f"- **{date} — {item['publisher']}:** "
+            f"[{item['title']}]({item['link']}) "
+            f"**Why it matters:** {item['why_it_matters']}"
+        )
+    return "\n".join(lines)
+
+
+def build_sources_markdown(items):
+    return "\n".join(
+        f"- {item['published'].strftime('%Y-%m-%d')} — "
+        f"[{item['publisher']}: {item['title']}]({item['link']})"
+        for item in items
+    )
+
+
 def run_ai_bot():
-    groq_api_key = os.environ.get("GROQ_API_KEY")
     github_token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+    groq_api_key = os.environ.get("GROQ_API_KEY")
     groq_model = os.environ.get("GROQ_MODEL", DEFAULT_GROQ_MODEL)
 
-    if not groq_api_key:
-        raise RuntimeError("Missing GROQ_API_KEY environment variable.")
     if not github_token:
         raise RuntimeError("Missing GitHub token (GH_TOKEN or GITHUB_TOKEN).")
 
-    client = Groq(api_key=groq_api_key)
+    candidates = get_live_candidates()
+    print(f"Verified recent RSS candidates: {len(candidates)}")
 
-    current_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    prompt = f"""
-Search the live web for the 3 most important developments in decentralized AI/GPU compute or DePIN infrastructure as of {current_date} UTC.
-
-Prefer the last 7 days; expand to 30 days only if needed.
-Focus on projects such as Akash, io.net, Render, Aethir, Gensyn, Nosana, or comparable decentralized compute networks.
-Use only claims supported by search results. Never invent numbers, dates, partnerships, or announcements.
-
-Return exactly 3 concise Markdown bullets, under 160 words total.
-Each bullet: date when available, topic/project, what changed, and why it matters.
-No heading, intro, conclusion, or separate source list.
-"""
-    print(f"Using Groq model with browser search: {groq_model}")
-    completion = client.chat.completions.create(
+    ai_selection = ai_select_sources(
+        candidates,
+        api_key=groq_api_key,
         model=groq_model,
-        messages=[{"role": "user", "content": prompt}],
-        tools=[{"type": "browser_search"}],
     )
+    selected_items = choose_items(candidates, ai_selection)
 
-    message = completion.choices[0].message
-    market_intelligence = (message.content or "").strip()
-    sources = extract_search_sources(message)
-
-    if not market_intelligence:
-        raise RuntimeError("Groq returned no market intelligence; README was not changed.")
-
-    if len(sources) < MIN_LIVE_SOURCES:
-        raise RuntimeError(
-            f"Live research verification failed: only {len(sources)} unique web sources "
-            f"were returned; need at least {MIN_LIVE_SOURCES}. README was not changed."
-        )
-
-    print(f"Verified live web sources: {len(sources)}")
-    sources_markdown = build_sources_markdown(sources)
+    market_intelligence = build_market_markdown(selected_items)
+    sources_markdown = build_sources_markdown(selected_items)
+    current_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
     vision_text = """# Atlas DePIN: Scaling AI Compute from Algeria to the World | Giveth
 
@@ -149,7 +316,7 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
 ### 🔎 Live Research Sources
 {sources_markdown}
 
-> Research retrieved live from the web on **{current_date} UTC**. If live-source verification fails, the bot leaves the previous README unchanged.
+> Sources are retrieved live from Google News RSS on **{current_date} UTC**. AI only ranks and summarizes verified feed items; if AI is unavailable, the bot safely falls back to the live headlines.
 
 ---
 *Updated on {current_date} via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
@@ -171,7 +338,7 @@ We welcome contributions from the community! Whether it's reporting a bug, impro
         final_readme,
         contents.sha,
     )
-    print("Success: README updated from verified live web research.")
+    print("Success: README updated from verified live RSS sources.")
 
 
 if __name__ == "__main__":
