@@ -12,12 +12,13 @@ from groq import Groq
 
 
 DEFAULT_GROQ_MODEL = "qwen/qwen3.6-27b"
-MAX_NEWS_AGE_DAYS = 30
+MAX_NEWS_AGE_DAYS = 90
 MAX_CANDIDATES = 12
 
 NEWS_QUERIES = [
-    '"decentralized GPU" OR "DePIN" "AI compute"',
-    'Akash OR "io.net" OR Render OR Aethir OR Gensyn OR Nosana "GPU compute"',
+    'DePIN GPU AI compute',
+    '"decentralized compute" AI GPU',
+    '"Akash Network" OR "io.net" OR Aethir OR Gensyn OR Nosana OR Render',
 ]
 
 RELEVANCE_TERMS = (
@@ -116,13 +117,20 @@ def get_live_candidates():
                 continue
 
             lowered = item["title"].lower()
-            if not any(term in lowered for term in RELEVANCE_TERMS):
-                continue
+            relevance_score = sum(
+                1 for term in RELEVANCE_TERMS if term in lowered
+            )
+            if any(term in lowered for term in ("ai", "cloud", "infrastructure", "network")):
+                relevance_score += 1
 
+            item["relevance_score"] = relevance_score
             seen.add(title_key)
             collected.append(item)
 
-    collected.sort(key=lambda item: item["published"], reverse=True)
+    collected.sort(
+        key=lambda item: (item.get("relevance_score", 0), item["published"]),
+        reverse=True,
+    )
 
     if len(collected) < 3:
         raise RuntimeError(
