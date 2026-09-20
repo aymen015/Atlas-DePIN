@@ -6,7 +6,7 @@ from groq import Groq
 from github import Auth, Github
 
 
-DEFAULT_GROQ_MODEL = "groq/compound-mini"
+DEFAULT_GROQ_MODEL = "openai/gpt-oss-120b"
 MIN_LIVE_SOURCES = 3
 
 
@@ -79,56 +79,25 @@ def run_ai_bot():
     if not github_token:
         raise RuntimeError("Missing GitHub token (GH_TOKEN or GITHUB_TOKEN).")
 
-    client = Groq(
-        api_key=groq_api_key,
-        default_headers={"Groq-Model-Version": "latest"},
-    )
+    client = Groq(api_key=groq_api_key)
 
     current_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     prompt = f"""
-You are the live research analyst for Atlas DePIN.
+Search the live web for the 3 most important developments in decentralized AI/GPU compute or DePIN infrastructure as of {current_date} UTC.
 
-TODAY (UTC): {current_date}
+Prefer the last 7 days; expand to 30 days only if needed.
+Focus on projects such as Akash, io.net, Render, Aethir, Gensyn, Nosana, or comparable decentralized compute networks.
+Use only claims supported by search results. Never invent numbers, dates, partnerships, or announcements.
 
-You MUST use web search before answering.
-
-Research current developments in decentralized AI compute / DePIN GPU infrastructure.
-Prioritize:
-- decentralized GPU compute networks,
-- GPU supply/demand or pricing that materially affects decentralized compute,
-- protocols such as Akash, io.net, Render, Aethir, Gensyn, Nosana, or comparable projects,
-- important launches, integrations, network metrics, funding, governance, or infrastructure changes.
-
-Freshness:
-1. Prefer developments from the last 7 days.
-2. If there are not 3 meaningful items, expand to the last 30 days.
-3. Do not present older background facts as current news.
-
-Evidence rules:
-- Only state claims supported by the web-search results.
-- Never invent statistics, dates, partnerships, token metrics, or project announcements.
-- Prefer primary/official sources and reputable industry reporting.
-- If a number is not explicitly supported by a source, omit it.
-
-Output exactly 3 concise Markdown bullet points.
-Each bullet must contain:
-- the event/publication date when available,
-- the project/topic,
-- what changed,
-- why it matters for decentralized AI compute.
-Keep all 3 bullets together under 180 words.
-Do not add a heading, introduction, conclusion, or separate source list.
+Return exactly 3 concise Markdown bullets, under 160 words total.
+Each bullet: date when available, topic/project, what changed, and why it matters.
+No heading, intro, conclusion, or separate source list.
 """
-
-    print(f"Using live Groq system: {groq_model}")
+    print(f"Using Groq model with browser search: {groq_model}")
     completion = client.chat.completions.create(
         model=groq_model,
         messages=[{"role": "user", "content": prompt}],
-        compound_custom={
-            "tools": {
-                "enabled_tools": ["web_search"],
-            }
-        },
+        tools=[{"type": "browser_search"}],
     )
 
     message = completion.choices[0].message
