@@ -21,17 +21,26 @@ NEWS_QUERIES = [
     '"Akash Network" OR "io.net" OR Aethir OR Gensyn OR Nosana OR Render',
 ]
 
-RELEVANCE_TERMS = (
+CORE_DEPIN_TERMS = (
     "depin",
     "decentralized",
-    "gpu",
-    "compute",
+    "decentralized cloud",
+    "decentralized compute",
+    "decentralized ai",
     "akash",
     "io.net",
-    "render",
     "aethir",
     "gensyn",
     "nosana",
+    "render network",
+)
+
+RELEVANCE_TERMS = (
+    *CORE_DEPIN_TERMS,
+    "gpu",
+    "compute",
+    "infrastructure",
+    "cloud",
 )
 
 
@@ -117,6 +126,9 @@ def get_live_candidates():
                 continue
 
             lowered = item["title"].lower()
+            if not any(term in lowered for term in CORE_DEPIN_TERMS):
+                continue
+
             relevance_score = sum(
                 2 for term in RELEVANCE_TERMS if term in lowered
             )
@@ -148,7 +160,7 @@ def get_live_candidates():
                 "token jumps",
                 "token surges",
                 "climbs",
-                "trade?",
+                "trade",
                 "trading",
                 "bullish",
                 "bearish",
