@@ -1,28 +1,37 @@
 import os
 import random
-from groq import Groq
-from github import Github, Auth
 from datetime import datetime
 
-def run_ai_bot():
-    GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
-    GH_TOKEN = os.environ.get("GH_TOKEN")
+from groq import Groq
+from github import Github, Auth
 
-    if not GROQ_API_KEY or not GH_TOKEN:
-        print("Error: Missing Environment Variables.")
-        return
+
+DEFAULT_GROQ_MODEL = "openai/gpt-oss-120b"
+
+
+def run_ai_bot():
+    groq_api_key = os.environ.get("GROQ_API_KEY")
+    github_token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+    groq_model = os.environ.get("GROQ_MODEL", DEFAULT_GROQ_MODEL)
+
+    if not groq_api_key:
+        raise RuntimeError("Missing GROQ_API_KEY environment variable.")
+    if not github_token:
+        raise RuntimeError("Missing GitHub token (GH_TOKEN or GITHUB_TOKEN).")
 
     # 1. تحليل ذكاء السوق
-    client = Groq(api_key=GROQ_API_KEY)
+    client = Groq(api_key=groq_api_key)
     prompt = """
-    Act as a DePIN analyst. Provide 3 short, technical bullet-point insights on current 
-    trends in decentralized AI compute (e.g., GPU demand, DePIN protocols). 
+    Act as a DePIN analyst. Provide 3 short, technical bullet-point insights on current
+    trends in decentralized AI compute (e.g., GPU demand, DePIN protocols).
     Keep it extremely concise (under 150 words total).
     Output ONLY the bullet points. Do NOT include intro text like "Here are the insights" or explanations.
     """
+
+    print(f"Using Groq model: {groq_model}")
     chat_completion = client.chat.completions.create(
         messages=[{"role": "user", "content": prompt}],
-        model="llama-3.3-70b-versatile"
+        model=groq_model,
     )
     market_intelligence = chat_completion.choices[0].message.content.strip()
 
@@ -56,12 +65,11 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
     fun_facts = [
         "Did you know? DePIN can reduce infrastructure costs by up to 40%.",
         "The future of AI compute is decentralized, and it's happening now.",
-        "Energy efficiency is the heartbeat of sustainable AI."
+        "Energy efficiency is the heartbeat of sustainable AI.",
     ]
     random_fact = random.choice(fun_facts)
     current_date = datetime.now().strftime("%Y-%m-%d")
-    
-    # هنا تم دمج روابط الحسابات الخاصة بك (X و LinkedIn) مع علم الجزائر بدقة في سطر واحد
+
     final_readme = f"""{vision_text}
 
 ## 🚀 Live Market Intelligence
@@ -79,16 +87,19 @@ We welcome contributions from the community! Whether it's reporting a bug, impro
 * **Have an idea?** Open a new [Issue](https://github.com/aymen015/Atlas-DePIN/issues) and let's discuss it."""
 
     # 4. التحديث على GitHub
-    auth = Auth.Token(GH_TOKEN)
-    g = Github(auth=auth)
-    repo = g.get_repo("aymen015/Atlas-DePIN")
+    auth = Auth.Token(github_token)
+    github = Github(auth=auth)
+    repo = github.get_repo("aymen015/Atlas-DePIN")
 
-    try:
-        contents = repo.get_contents("README.md")
-        repo.update_file(contents.path, "feat: Update Atlas DePIN vision and market data", final_readme, contents.sha)
-        print("Success: README updated with LinkedIn link, vision, and intelligence!")
-    except Exception as e:
-        print(f"Error: {e}")
+    contents = repo.get_contents("README.md")
+    repo.update_file(
+        contents.path,
+        "feat: Update Atlas DePIN vision and market data",
+        final_readme,
+        contents.sha,
+    )
+    print("Success: README updated with fresh Atlas DePIN market intelligence!")
+
 
 if __name__ == "__main__":
     run_ai_bot()
