@@ -1,12 +1,72 @@
 import os
-import random
-from datetime import datetime
+import re
+from datetime import datetime, timezone
 
 from groq import Groq
-from github import Github, Auth
+from github import Auth, Github
 
 
-DEFAULT_GROQ_MODEL = "openai/gpt-oss-120b"
+DEFAULT_GROQ_MODEL = "groq/compound-mini"
+MIN_LIVE_SOURCES = 3
+
+
+def _as_dict(value):
+    if isinstance(value, dict):
+        return value
+    if hasattr(value, "model_dump"):
+        return value.model_dump()
+    return {}
+
+
+def extract_search_sources(message):
+    """Extract verified URLs returned by Groq's executed web-search tool."""
+    sources = []
+    seen_urls = set()
+
+    for tool in getattr(message, "executed_tools", None) or []:
+        tool_data = _as_dict(tool)
+
+        search_results = tool_data.get("search_results")
+        if search_results is None:
+            search_results = getattr(tool, "search_results", None)
+
+        if hasattr(search_results, "model_dump"):
+            search_results = search_results.model_dump()
+
+        if isinstance(search_results, dict):
+            results = search_results.get("results", [])
+        elif isinstance(search_results, list):
+            results = search_results
+        else:
+            results = []
+
+        for result in results:
+            result_data = _as_dict(result) if not isinstance(result, dict) else result
+            url = (result_data.get("url") or "").strip()
+            title = (result_data.get("title") or url).strip()
+            if url and url not in seen_urls:
+                sources.append({"title": title, "url": url})
+                seen_urls.add(url)
+
+        # Compatibility fallback for SDK/API response shapes that expose
+        # raw tool output instead of structured search_results.
+        output = tool_data.get("output") or getattr(tool, "output", "") or ""
+        if isinstance(output, str):
+            for url in re.findall(r"https?://[^\s)\]}>\"']+", output):
+                url = url.rstrip(".,;:")
+                if url not in seen_urls:
+                    sources.append({"title": url, "url": url})
+                    seen_urls.add(url)
+
+    return sources
+
+
+def build_sources_markdown(sources, limit=6):
+    lines = []
+    for source in sources[:limit]:
+        safe_title = source["title"].replace("[", "").replace("]", "")
+        lines.append(f"- [{safe_title}]({source['url']})")
+    return "\n".join(lines)
 
 
 def run_ai_bot():
@@ -19,23 +79,74 @@ def run_ai_bot():
     if not github_token:
         raise RuntimeError("Missing GitHub token (GH_TOKEN or GITHUB_TOKEN).")
 
-    # 1. تحليل ذكاء السوق
-    client = Groq(api_key=groq_api_key)
-    prompt = """
-    Act as a DePIN analyst. Provide 3 short, technical bullet-point insights on current
-    trends in decentralized AI compute (e.g., GPU demand, DePIN protocols).
-    Keep it extremely concise (under 150 words total).
-    Output ONLY the bullet points. Do NOT include intro text like "Here are the insights" or explanations.
-    """
-
-    print(f"Using Groq model: {groq_model}")
-    chat_completion = client.chat.completions.create(
-        messages=[{"role": "user", "content": prompt}],
-        model=groq_model,
+    client = Groq(
+        api_key=groq_api_key,
+        default_headers={"Groq-Model-Version": "latest"},
     )
-    market_intelligence = chat_completion.choices[0].message.content.strip()
 
-    # 2. نص المشروع الثابت
+    current_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    prompt = f"""
+You are the live research analyst for Atlas DePIN.
+
+TODAY (UTC): {current_date}
+
+You MUST use web search before answering.
+
+Research current developments in decentralized AI compute / DePIN GPU infrastructure.
+Prioritize:
+- decentralized GPU compute networks,
+- GPU supply/demand or pricing that materially affects decentralized compute,
+- protocols such as Akash, io.net, Render, Aethir, Gensyn, Nosana, or comparable projects,
+- important launches, integrations, network metrics, funding, governance, or infrastructure changes.
+
+Freshness:
+1. Prefer developments from the last 7 days.
+2. If there are not 3 meaningful items, expand to the last 30 days.
+3. Do not present older background facts as current news.
+
+Evidence rules:
+- Only state claims supported by the web-search results.
+- Never invent statistics, dates, partnerships, token metrics, or project announcements.
+- Prefer primary/official sources and reputable industry reporting.
+- If a number is not explicitly supported by a source, omit it.
+
+Output exactly 3 concise Markdown bullet points.
+Each bullet must contain:
+- the event/publication date when available,
+- the project/topic,
+- what changed,
+- why it matters for decentralized AI compute.
+Keep all 3 bullets together under 180 words.
+Do not add a heading, introduction, conclusion, or separate source list.
+"""
+
+    print(f"Using live Groq system: {groq_model}")
+    completion = client.chat.completions.create(
+        model=groq_model,
+        messages=[{"role": "user", "content": prompt}],
+        compound_custom={
+            "tools": {
+                "enabled_tools": ["web_search"],
+            }
+        },
+    )
+
+    message = completion.choices[0].message
+    market_intelligence = (message.content or "").strip()
+    sources = extract_search_sources(message)
+
+    if not market_intelligence:
+        raise RuntimeError("Groq returned no market intelligence; README was not changed.")
+
+    if len(sources) < MIN_LIVE_SOURCES:
+        raise RuntimeError(
+            f"Live research verification failed: only {len(sources)} unique web sources "
+            f"were returned; need at least {MIN_LIVE_SOURCES}. README was not changed."
+        )
+
+    print(f"Verified live web sources: {len(sources)}")
+    sources_markdown = build_sources_markdown(sources)
+
     vision_text = """# Atlas DePIN: Scaling AI Compute from Algeria to the World | Giveth
 
 ![Build Status](https://img.shields.io/badge/Status-Active-brightgreen)
@@ -61,21 +172,15 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
 - **Orchestration:** Automated K8s clusters for seamless AI workload distribution.
 - **Monitoring:** Real-time tracking via Prometheus/Grafana to ensure peak performance-per-watt."""
 
-    # 3. إعداد المحتوى الديناميكي والعشوائي
-    fun_facts = [
-        "Did you know? DePIN can reduce infrastructure costs by up to 40%.",
-        "The future of AI compute is decentralized, and it's happening now.",
-        "Energy efficiency is the heartbeat of sustainable AI.",
-    ]
-    random_fact = random.choice(fun_facts)
-    current_date = datetime.now().strftime("%Y-%m-%d")
-
     final_readme = f"""{vision_text}
 
 ## 🚀 Live Market Intelligence
 {market_intelligence}
 
-> *{random_fact}*
+### 🔎 Live Research Sources
+{sources_markdown}
+
+> Research retrieved live from the web on **{current_date} UTC**. If live-source verification fails, the bot leaves the previous README unchanged.
 
 ---
 *Updated on {current_date} via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
@@ -86,7 +191,6 @@ We welcome contributions from the community! Whether it's reporting a bug, impro
 * **Read our guidelines:** Check out [CONTRIBUTING.md](CONTRIBUTING_TEMPLATE.md) for how to get started.
 * **Have an idea?** Open a new [Issue](https://github.com/aymen015/Atlas-DePIN/issues) and let's discuss it."""
 
-    # 4. التحديث على GitHub
     auth = Auth.Token(github_token)
     github = Github(auth=auth)
     repo = github.get_repo("aymen015/Atlas-DePIN")
@@ -94,11 +198,11 @@ We welcome contributions from the community! Whether it's reporting a bug, impro
     contents = repo.get_contents("README.md")
     repo.update_file(
         contents.path,
-        "feat: Update Atlas DePIN vision and market data",
+        "feat: publish verified live DePIN market intelligence",
         final_readme,
         contents.sha,
     )
-    print("Success: README updated with fresh Atlas DePIN market intelligence!")
+    print("Success: README updated from verified live web research.")
 
 
 if __name__ == "__main__":
