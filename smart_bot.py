@@ -11,13 +11,13 @@ from github import Auth, Github
 from groq import Groq
 
 
-DEFAULT_GROQ_MODEL = "qwen/qwen3.6-27b"
+DEFAULT_GROQ_MODEL = "openai/gpt-oss-20b"
 MAX_NEWS_AGE_DAYS = 90
 MAX_CANDIDATES = 12
 
 NEWS_QUERIES = [
-    'DePIN GPU AI compute',
-    '"decentralized compute" AI GPU',
+    'DePIN GPU AI compute infrastructure launch partnership',
+    '"decentralized compute" AI GPU infrastructure funding',
     '"Akash Network" OR "io.net" OR Aethir OR Gensyn OR Nosana OR Render',
 ]
 
@@ -118,10 +118,44 @@ def get_live_candidates():
 
             lowered = item["title"].lower()
             relevance_score = sum(
-                1 for term in RELEVANCE_TERMS if term in lowered
+                2 for term in RELEVANCE_TERMS if term in lowered
             )
-            if any(term in lowered for term in ("ai", "cloud", "infrastructure", "network")):
-                relevance_score += 1
+
+            substantive_terms = (
+                "launch",
+                "mainnet",
+                "partnership",
+                "partner",
+                "integration",
+                "integrates",
+                "funding",
+                "fundraise",
+                "infrastructure",
+                "network",
+                "cluster",
+                "data center",
+                "datacenter",
+                "gpu",
+                "compute",
+            )
+            relevance_score += sum(
+                2 for term in substantive_terms if term in lowered
+            )
+
+            market_noise_terms = (
+                "price prediction",
+                "price forecast",
+                "token jumps",
+                "token surges",
+                "climbs",
+                "trade?",
+                "trading",
+                "bullish",
+                "bearish",
+                "buy now",
+            )
+            if any(term in lowered for term in market_noise_terms):
+                relevance_score -= 8
 
             item["relevance_score"] = relevance_score
             seen.add(title_key)
