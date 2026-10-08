@@ -33,10 +33,10 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
 - 2026-08-19 — [Coin Gabbar: Decentralized Compute Crypto Coins Gain Momentum Now - Coin Gabbar](https://news.google.com/rss/articles/CBMimAFBVV95cUxPM1B1N2hyNjFPS0ZlUVEtV0V5Z1pPdlBLT0ZjeGZKNkZnVjdDNE9yUUstUHQ5cWtNUGU5LVRfWWhRbjZKcHY2cHoxSmxHcTdOUnZUQVd0TUVVT0JlUkZaZUNzaFRFRlhyVzd3U0ZQdWRFVXJERkxNMVFPbFAxclVSUjJDd29hNjVteXpkNUsyZjcxaGVRV3hVdQ?oc=5)
 - 2026-09-20 — [CoinMarketCap: Render Network's Sharp 1 Hour Move Explained: AI and DePIN - CoinMarketCap](https://news.google.com/rss/articles/CBMicEFVX3lxTE5naFVrYlNBQUNMZUp1X3pJOTI5M1prNGZEX2ZScjBWR2xhQkJac19lNlVLS0tLTHhhODZqeVktWXVjdWpqVFVoNGJ2Y0dJQ0szYzhvck5FWExVN3FrY09TeDlTdERad3ZVRDFKREhsUWw?oc=5)
 
-> Sources are retrieved live from Google News RSS on **2026-10-07 UTC**. AI only ranks and summarizes verified feed items; if AI is unavailable, the bot safely falls back to the live headlines.
+> Sources are retrieved live from Google News RSS on **2026-10-08 UTC**. AI only ranks and summarizes verified feed items; if AI is unavailable, the bot safely falls back to the live headlines.
 
 ---
-*Updated on 2026-10-07 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
+*Updated on 2026-10-08 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
 
 ### 🤝 How to Contribute
 We welcome contributions from the community! Whether it's reporting a bug, improving documentation, or adding new DePIN insights, your help makes **Atlas-DePIN** stronger.
