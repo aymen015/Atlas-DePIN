@@ -24,19 +24,19 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
 - **Monitoring:** Real-time tracking via Prometheus/Grafana to ensure peak performance-per-watt.
 
 ## 🚀 Live Market Intelligence
-- **2026-10-20 — HackerNoon:** [Meris Network Joins the Aethir Ecosystem as a Compute Provider - HackerNoon](https://news.google.com/rss/articles/CBMijgFBVV95cUxPSTMtNWZXRVo0NGxoR0FRaUtOREVqUjFjcWI0blpxeHNFcWMtaU04d282MFgxcWYtUm5xcDNnelNscGVfaHFEajREamJPc3BMT0RmM05yRTBJMWVFZk8xSG5Ea19YeTNIU2RPM2RXWnRBbkJSLUFSeGVRbkZuZ2RlUXZuNGNoLTlxd1NtVnh3?oc=5) **Why it matters:** This is relevant to the availability and evolution of decentralized compute infrastructure.
-- **2026-08-26 — FinanceFeeds:** [5 Best Decentralized Compute Marketplaces for AI Developers - FinanceFeeds](https://news.google.com/rss/articles/CBMijgFBVV95cUxNd2dUaUw4cHY2YVUtN3FKZ3VTd3NZMWxHNWt6MnhZODc5RVNyUTh3em1adUNoN2NPalMwRy1fclppYXRZR3dDVzNWdVk1T0pJODFsUzBEaUNJOTZvNEg4MnIyTmJHaWp6eG40QmJoMF9Vdlc3eVpTUlU3bjI4ZjZ3d1R0ZUtNWlhOR3F1dVhn?oc=5) **Why it matters:** This is a current market signal relevant to decentralized AI and DePIN compute.
 - **2026-08-19 — Coin Gabbar:** [Decentralized Compute Crypto Coins Gain Momentum Now - Coin Gabbar](https://news.google.com/rss/articles/CBMimAFBVV95cUxPM1B1N2hyNjFPS0ZlUVEtV0V5Z1pPdlBLT0ZjeGZKNkZnVjdDNE9yUUstUHQ5cWtNUGU5LVRfWWhRbjZKcHY2cHoxSmxHcTdOUnZUQVd0TUVVT0JlUkZaZUNzaFRFRlhyVzd3U0ZQdWRFVXJERkxNMVFPbFAxclVSUjJDd29hNjVteXpkNUsyZjcxaGVRV3hVdQ?oc=5) **Why it matters:** This is a current market signal relevant to decentralized AI and DePIN compute.
+- **2026-10-21 — KuCoin:** [Aethir Launches Daily ATH Burn Mechanism, Tied to Network Activity - KuCoin](https://news.google.com/rss/articles/CBMioAFBVV95cUxQZkR1dkE3cF9GLTdhTmRnaEdoUXhrT2xSRlo3TVJLNWJmOHlFYWlDLU1zQnoyOFdHbl9lS1JrejlaWGVuaE9IbDhBQU5INjhMSnFfSHJ4UHhFdzUxNWJRcnl1WDF0SWVJZUZlSWZiNTJMZEhPU3hjMGUtTTBtLTZoSnhZRWJ2Mm15Q3A2WlM1YTJkTmJaQmw1ME9EeTVXdzN1?oc=5) **Why it matters:** This is relevant to the availability and evolution of decentralized compute infrastructure.
+- **2026-09-22 — Binance:** [DePIN Revolution: BitTorrent Chain (BTTC) becomes an infrastructure giant - Binance](https://news.google.com/rss/articles/CBMiZEFVX3lxTE1SeGw1R1dHM1oyajR4anRVRVBWTmZlUG5OdWNWY2hhbFBHOEl3bVQyMzFST25FVkJETTJSSkRmVlpDXzU3N0xTbmxrRWFwTmRULXJoaXNTTFJFWkctckNMNzZCeDA?oc=5) **Why it matters:** This is a current market signal relevant to decentralized AI and DePIN compute.
 
 ### 🔎 Live Research Sources
-- 2026-10-20 — [HackerNoon: Meris Network Joins the Aethir Ecosystem as a Compute Provider - HackerNoon](https://news.google.com/rss/articles/CBMijgFBVV95cUxPSTMtNWZXRVo0NGxoR0FRaUtOREVqUjFjcWI0blpxeHNFcWMtaU04d282MFgxcWYtUm5xcDNnelNscGVfaHFEajREamJPc3BMT0RmM05yRTBJMWVFZk8xSG5Ea19YeTNIU2RPM2RXWnRBbkJSLUFSeGVRbkZuZ2RlUXZuNGNoLTlxd1NtVnh3?oc=5)
-- 2026-08-26 — [FinanceFeeds: 5 Best Decentralized Compute Marketplaces for AI Developers - FinanceFeeds](https://news.google.com/rss/articles/CBMijgFBVV95cUxNd2dUaUw4cHY2YVUtN3FKZ3VTd3NZMWxHNWt6MnhZODc5RVNyUTh3em1adUNoN2NPalMwRy1fclppYXRZR3dDVzNWdVk1T0pJODFsUzBEaUNJOTZvNEg4MnIyTmJHaWp6eG40QmJoMF9Vdlc3eVpTUlU3bjI4ZjZ3d1R0ZUtNWlhOR3F1dVhn?oc=5)
 - 2026-08-19 — [Coin Gabbar: Decentralized Compute Crypto Coins Gain Momentum Now - Coin Gabbar](https://news.google.com/rss/articles/CBMimAFBVV95cUxPM1B1N2hyNjFPS0ZlUVEtV0V5Z1pPdlBLT0ZjeGZKNkZnVjdDNE9yUUstUHQ5cWtNUGU5LVRfWWhRbjZKcHY2cHoxSmxHcTdOUnZUQVd0TUVVT0JlUkZaZUNzaFRFRlhyVzd3U0ZQdWRFVXJERkxNMVFPbFAxclVSUjJDd29hNjVteXpkNUsyZjcxaGVRV3hVdQ?oc=5)
+- 2026-10-21 — [KuCoin: Aethir Launches Daily ATH Burn Mechanism, Tied to Network Activity - KuCoin](https://news.google.com/rss/articles/CBMioAFBVV95cUxQZkR1dkE3cF9GLTdhTmRnaEdoUXhrT2xSRlo3TVJLNWJmOHlFYWlDLU1zQnoyOFdHbl9lS1JrejlaWGVuaE9IbDhBQU5INjhMSnFfSHJ4UHhFdzUxNWJRcnl1WDF0SWVJZUZlSWZiNTJMZEhPU3hjMGUtTTBtLTZoSnhZRWJ2Mm15Q3A2WlM1YTJkTmJaQmw1ME9EeTVXdzN1?oc=5)
+- 2026-09-22 — [Binance: DePIN Revolution: BitTorrent Chain (BTTC) becomes an infrastructure giant - Binance](https://news.google.com/rss/articles/CBMiZEFVX3lxTE1SeGw1R1dHM1oyajR4anRVRVBWTmZlUG5OdWNWY2hhbFBHOEl3bVQyMzFST25FVkJETTJSSkRmVlpDXzU3N0xTbmxrRWFwTmRULXJoaXNTTFJFWkctckNMNzZCeDA?oc=5)
 
-> Sources are retrieved live from Google News RSS on **2026-10-21 UTC**. AI only ranks and summarizes verified feed items; if AI is unavailable, the bot safely falls back to the live headlines.
+> Sources are retrieved live from Google News RSS on **2026-10-22 UTC**. AI only ranks and summarizes verified feed items; if AI is unavailable, the bot safely falls back to the live headlines.
 
 ---
-*Updated on 2026-10-21 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
+*Updated on 2026-10-22 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
 
 ### 🤝 How to Contribute
 We welcome contributions from the community! Whether it's reporting a bug, improving documentation, or adding new DePIN insights, your help makes **Atlas-DePIN** stronger.
