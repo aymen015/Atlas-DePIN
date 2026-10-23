@@ -33,10 +33,10 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
 - 2026-10-21 — [KuCoin: Aethir Launches Daily ATH Burn Mechanism, Tied to Network Activity - KuCoin](https://news.google.com/rss/articles/CBMioAFBVV95cUxQZkR1dkE3cF9GLTdhTmRnaEdoUXhrT2xSRlo3TVJLNWJmOHlFYWlDLU1zQnoyOFdHbl9lS1JrejlaWGVuaE9IbDhBQU5INjhMSnFfSHJ4UHhFdzUxNWJRcnl1WDF0SWVJZUZlSWZiNTJMZEhPU3hjMGUtTTBtLTZoSnhZRWJ2Mm15Q3A2WlM1YTJkTmJaQmw1ME9EeTVXdzN1?oc=5)
 - 2026-09-22 — [Binance: DePIN Revolution: BitTorrent Chain (BTTC) becomes an infrastructure giant - Binance](https://news.google.com/rss/articles/CBMiZEFVX3lxTE1SeGw1R1dHM1oyajR4anRVRVBWTmZlUG5OdWNWY2hhbFBHOEl3bVQyMzFST25FVkJETTJSSkRmVlpDXzU3N0xTbmxrRWFwTmRULXJoaXNTTFJFWkctckNMNzZCeDA?oc=5)
 
-> Sources are retrieved live from Google News RSS on **2026-10-22 UTC**. AI only ranks and summarizes verified feed items; if AI is unavailable, the bot safely falls back to the live headlines.
+> Sources are retrieved live from Google News RSS on **2026-10-23 UTC**. AI only ranks and summarizes verified feed items; if AI is unavailable, the bot safely falls back to the live headlines.
 
 ---
-*Updated on 2026-10-22 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
+*Updated on 2026-10-23 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
 
 ### 🤝 How to Contribute
 We welcome contributions from the community! Whether it's reporting a bug, improving documentation, or adding new DePIN insights, your help makes **Atlas-DePIN** stronger.
