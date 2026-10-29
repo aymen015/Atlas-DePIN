@@ -26,17 +26,17 @@ Atlas-DePIN is a community-driven initiative. If you value our mission to decent
 ## 🚀 Live Market Intelligence
 - **2026-10-27 — OneBullEx:** [Gensyn AI Reinvents Machine Learning Through Decentralized Compute Networks - OneBullEx](https://news.google.com/rss/articles/CBMif0FVX3lxTE0tN2lhVkthMWc2ZW5zVmM0dEdtbWl3cktNTkNiZ19sOXdyNUFDLU5ZMEpVS2xfTmxzZ1J3VTdJTF9pUTZjcVFGMUlWQng4YmR1enhIYmhnZ2xRY1VYTkpOMHBUNVhqZW0xaEZEa3VIRHg3ZndqNDZVekhlcVlHQlk?oc=5) **Why it matters:** This is relevant to the availability and evolution of decentralized compute infrastructure.
 - **2026-10-26 — Pluang:** [Akash Network plans to migrate its decentralized compute marketplace to Solana, pending community vote and audits. - Pluang](https://news.google.com/rss/articles/CBMijAFBVV95cUxQd19kTldpcVVMb0pSdWVSMk0wejRLcDVXLVNLT0FxTk9oVUpuTkJLNlREekhQWUxtcXBIWjdqcTNUdnNfcFVnS1prNWUxYnRUMDRkZ3YxaktBSjZjNUhCUzRxeHNDR1BPLXpyUk5HT0VlOFd5X0NiZ3JQd2taclVrMy1Ybi1LY2RxSW82eQ?oc=5) **Why it matters:** This is relevant to the availability and evolution of decentralized compute infrastructure.
-- **2026-09-22 — Binance:** [DePIN Revolution: BitTorrent Chain (BTTC) becomes an infrastructure giant - Binance](https://news.google.com/rss/articles/CBMiZEFVX3lxTE1SeGw1R1dHM1oyajR4anRVRVBWTmZlUG5OdWNWY2hhbFBHOEl3bVQyMzFST25FVkJETTJSSkRmVlpDXzU3N0xTbmxrRWFwTmRULXJoaXNTTFJFWkctckNMNzZCeDA?oc=5) **Why it matters:** This is a current market signal relevant to decentralized AI and DePIN compute.
+- **2026-09-20 — CoinMarketCap:** [Render Network's Sharp 1 Hour Move Explained: AI and DePIN - CoinMarketCap](https://news.google.com/rss/articles/CBMicEFVX3lxTE5naFVrYlNBQUNMZUp1X3pJOTI5M1prNGZEX2ZScjBWR2xhQkJac19lNlVLS0tLTHhhODZqeVktWXVjdWpqVFVoNGJ2Y0dJQ0szYzhvck5FWExVN3FrY09TeDlTdERad3ZVRDFKREhsUWw?oc=5) **Why it matters:** This is relevant to the availability and evolution of decentralized compute infrastructure.
 
 ### 🔎 Live Research Sources
 - 2026-10-27 — [OneBullEx: Gensyn AI Reinvents Machine Learning Through Decentralized Compute Networks - OneBullEx](https://news.google.com/rss/articles/CBMif0FVX3lxTE0tN2lhVkthMWc2ZW5zVmM0dEdtbWl3cktNTkNiZ19sOXdyNUFDLU5ZMEpVS2xfTmxzZ1J3VTdJTF9pUTZjcVFGMUlWQng4YmR1enhIYmhnZ2xRY1VYTkpOMHBUNVhqZW0xaEZEa3VIRHg3ZndqNDZVekhlcVlHQlk?oc=5)
 - 2026-10-26 — [Pluang: Akash Network plans to migrate its decentralized compute marketplace to Solana, pending community vote and audits. - Pluang](https://news.google.com/rss/articles/CBMijAFBVV95cUxQd19kTldpcVVMb0pSdWVSMk0wejRLcDVXLVNLT0FxTk9oVUpuTkJLNlREekhQWUxtcXBIWjdqcTNUdnNfcFVnS1prNWUxYnRUMDRkZ3YxaktBSjZjNUhCUzRxeHNDR1BPLXpyUk5HT0VlOFd5X0NiZ3JQd2taclVrMy1Ybi1LY2RxSW82eQ?oc=5)
-- 2026-09-22 — [Binance: DePIN Revolution: BitTorrent Chain (BTTC) becomes an infrastructure giant - Binance](https://news.google.com/rss/articles/CBMiZEFVX3lxTE1SeGw1R1dHM1oyajR4anRVRVBWTmZlUG5OdWNWY2hhbFBHOEl3bVQyMzFST25FVkJETTJSSkRmVlpDXzU3N0xTbmxrRWFwTmRULXJoaXNTTFJFWkctckNMNzZCeDA?oc=5)
+- 2026-09-20 — [CoinMarketCap: Render Network's Sharp 1 Hour Move Explained: AI and DePIN - CoinMarketCap](https://news.google.com/rss/articles/CBMicEFVX3lxTE5naFVrYlNBQUNMZUp1X3pJOTI5M1prNGZEX2ZScjBWR2xhQkJac19lNlVLS0tLTHhhODZqeVktWXVjdWpqVFVoNGJ2Y0dJQ0szYzhvck5FWExVN3FrY09TeDlTdERad3ZVRDFKREhsUWw?oc=5)
 
-> Sources are retrieved live from Google News RSS on **2026-10-28 UTC**. AI only ranks and summarizes verified feed items; if AI is unavailable, the bot safely falls back to the live headlines.
+> Sources are retrieved live from Google News RSS on **2026-10-29 UTC**. AI only ranks and summarizes verified feed items; if AI is unavailable, the bot safely falls back to the live headlines.
 
 ---
-*Updated on 2026-10-28 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
+*Updated on 2026-10-29 via Ayman | Atlas DePIN 🇩🇿 | [LinkedIn](https://linkedin.com/in/aymen-atlas-depin) | [Twitter](https://x.com/cotex5024)*
 
 ### 🤝 How to Contribute
 We welcome contributions from the community! Whether it's reporting a bug, improving documentation, or adding new DePIN insights, your help makes **Atlas-DePIN** stronger.
